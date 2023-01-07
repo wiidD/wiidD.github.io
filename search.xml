@@ -4,6 +4,201 @@
   
     
     <entry>
+      <title>lc29两数相除</title>
+      <link href="/2023/01/07/lc29%E4%B8%A4%E6%95%B0%E7%9B%B8%E9%99%A4/"/>
+      <url>/2023/01/07/lc29%E4%B8%A4%E6%95%B0%E7%9B%B8%E9%99%A4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/divide-two-integers/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><code>a / b = x</code>， <code>x</code>用二进制表示<code>(eg:100010...10)</code></p><p>借助二进制思想，每一位可表示<code>2 ^ n</code>个<code>b</code></p><p>b的零次方不用管，为余数部分，不在商中</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">divide</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//二进制思想, logn级别</span></span><br><span class="line">        <span class="type">bool</span> binus = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>((x &gt; <span class="number">0</span> &amp;&amp; y &lt; <span class="number">0</span>) || (x &lt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>)) binus = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line">        vector&lt;LL&gt; bur;</span><br><span class="line"></span><br><span class="line">        LL res = <span class="number">0</span>;</span><br><span class="line">        LL a = <span class="built_in">abs</span>((LL)x), b = <span class="built_in">abs</span>((LL)y);</span><br><span class="line">        <span class="keyword">for</span> (LL i = b; i &lt;= a; i = i + i) bur.<span class="built_in">push_back</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = bur.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i -- ) &#123;</span><br><span class="line">            <span class="keyword">if</span>(a &gt;= bur[i]) &#123;</span><br><span class="line">                a -= bur[i];</span><br><span class="line">                res += <span class="number">1LL</span> &lt;&lt; i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(binus) res = -res;</span><br><span class="line">        <span class="keyword">if</span>(res &gt; INT_MAX || res &lt; INT_MIN) <span class="keyword">return</span> INT_MAX;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 位运算 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc28找出字符串中第一个匹配项的下标</title>
+      <link href="/2023/01/07/lc28%E6%89%BE%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9A%84%E4%B8%8B%E6%A0%87/"/>
+      <url>/2023/01/07/lc28%E6%89%BE%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%B9%E9%85%8D%E9%A1%B9%E7%9A%84%E4%B8%8B%E6%A0%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/">题目链接</a></h3><p>KMP算法</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">strStr</span><span class="params">(string haystack, string needle)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ne[<span class="number">100000</span>];</span><br><span class="line">        ne[<span class="number">0</span>] = <span class="number">-1</span>;<span class="comment">//下标从0开始</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, j = <span class="number">-1</span>; i &lt; needle.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; needle[i] != needle[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">            <span class="keyword">if</span>(needle[i] == needle[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">            ne[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">-1</span>; i &lt; haystack.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; haystack[i] != needle[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">            <span class="keyword">if</span>(haystack[i] == needle[j + <span class="number">1</span>]) j ++ ;</span><br><span class="line">            <span class="keyword">if</span>(j == needle.<span class="built_in">size</span>() - <span class="number">1</span>) </span><br><span class="line">                <span class="keyword">return</span> i - needle.<span class="built_in">size</span>() + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 字符串 </tag>
+            
+            <tag> 双指针 </tag>
+            
+            <tag> 字符串匹配 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc27移除元素</title>
+      <link href="/2023/01/07/lc27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"/>
+      <url>/2023/01/07/lc27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/remove-element/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>要求原地修改数组，利用双指针思想，前指针遍历数组，后指针指向新数组</p><p>当前指针遍历到<code>val</code>值时，不加入新数组即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != val) nums[k ++ ] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc26删除有序数组中的重复项</title>
+      <link href="/2023/01/07/lc26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
+      <url>/2023/01/07/lc26%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>第一种利用<code>erase</code>与<code>unique</code>函数搭配使用</p><p>第二种由于是升序元素，判断相邻两元素是否相等即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*int k = 0;</span></span><br><span class="line"><span class="comment">        for (int i = 0; i &lt; nums.size(); i ++ ) &#123;</span></span><br><span class="line"><span class="comment">            if(!i || nums[i] != nums[i - 1]) &#123;</span></span><br><span class="line"><span class="comment">                nums[k ++ ] = nums[i];</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        return k;*/</span></span><br><span class="line">        </span><br><span class="line">        nums.<span class="built_in">erase</span>(<span class="built_in">unique</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>()), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> nums.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc25K 个一组翻转链表</title>
+      <link href="/2023/01/07/lc25K-%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+      <url>/2023/01/07/lc25K-%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/reverse-nodes-in-k-group/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>k个一组，判断当前剩余元素是否够k个有些绕，定义一个节点指向该组元素的前一个结点即可</p><p>在交换节点时，两两交换，注意最后记得对首尾两个元素的剩余一条指向进行操作</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseKGroup</span><span class="params">(ListNode* head, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> p = dummy; ;) &#123;</span><br><span class="line">            <span class="keyword">auto</span> q = p;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; k &amp;&amp; q; i ++ ) q = q-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(!q) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">auto</span> a = p-&gt;next, b = a-&gt;next;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; k - <span class="number">1</span>; i ++ ) &#123;</span><br><span class="line">                <span class="keyword">auto</span> c = b-&gt;next;</span><br><span class="line">                b-&gt;next = a;</span><br><span class="line">                a = b;</span><br><span class="line">                b = c;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">auto</span> c = p-&gt;next;</span><br><span class="line">            p-&gt;next = a;</span><br><span class="line">            c-&gt;next = b;</span><br><span class="line">            p = c;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 递归 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc24两两交换链表中的节点</title>
+      <link href="/2023/01/07/lc24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/"/>
+      <url>/2023/01/07/lc24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/swap-nodes-in-pairs/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> p = dummy; p-&gt;next &amp;&amp; p-&gt;next-&gt;next;) &#123;</span><br><span class="line">            <span class="keyword">auto</span> a = p-&gt;next, b = a-&gt;next;</span><br><span class="line">            p-&gt;next = b;</span><br><span class="line">            a-&gt;next = b-&gt;next;</span><br><span class="line">            b-&gt;next = a;</span><br><span class="line">            p = a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 递归 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc23合并K个升序链表</title>
+      <link href="/2023/01/07/lc23%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/"/>
+      <url>/2023/01/07/lc23%E5%90%88%E5%B9%B6K%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/merge-k-sorted-lists/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>k个升序链表合并，归并的思想，每次取最小的加入</p><p>建立一个小根堆，每次取队头，需自己写比较规则</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">Cmp</span> &#123;</span><br><span class="line">        <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(ListNode* a, ListNode* b)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(vector&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;ListNode*, vector&lt;ListNode*&gt;, Cmp&gt; heap;</span><br><span class="line"></span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">auto</span> cur = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>* list : lists) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list)</span><br><span class="line">                heap.<span class="built_in">push</span>(list);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(heap.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> t = heap.<span class="built_in">top</span>();</span><br><span class="line">            heap.<span class="built_in">pop</span>();</span><br><span class="line">            cur = cur -&gt;next = t;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(t-&gt;next) heap.<span class="built_in">push</span>(t-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+            <tag> 分治 </tag>
+            
+            <tag> 堆（优先队列） </tag>
+            
+            <tag> 归并排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>lc22括号生成</title>
       <link href="/2023/01/03/lc22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"/>
       <url>/2023/01/03/lc22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</url>
