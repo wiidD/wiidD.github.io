@@ -4,6 +4,208 @@
   
     
     <entry>
+      <title>lc40组合总和 II</title>
+      <link href="/2023/01/11/lc40%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-II/"/>
+      <url>/2023/01/11/lc40%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-II/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc39组合总和</title>
+      <link href="/2023/01/11/lc39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/"/>
+      <url>/2023/01/11/lc39%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/combination-sum/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于同一数字可以无限选取，那么递归每一位时，对该数位选取几次进行递归；</p><p>最后选取了几次需全部删去，递归不选该位的情况</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">combinationSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, <span class="number">0</span>, target, path);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt; c, <span class="type">int</span> u, <span class="type">int</span> target, vector&lt;<span class="type">int</span>&gt; path)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(target == <span class="number">0</span>) &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(path);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(u == c.<span class="built_in">size</span>()) <span class="keyword">return</span> ;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; c[u] * i &lt;= target; i ++ ) &#123;</span><br><span class="line">            <span class="built_in">dfs</span>(c, u + <span class="number">1</span>, target - i * c[u], path);</span><br><span class="line">            path.<span class="built_in">push_back</span>(c[u]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; c[u] * i &lt;= target; i ++ ) &#123;</span><br><span class="line">            path.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 回溯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc38外观数列</title>
+      <link href="/2023/01/11/lc38%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/"/>
+      <url>/2023/01/11/lc38%E5%A4%96%E8%A7%82%E6%95%B0%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/count-and-say/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>几个几的问题</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">countAndSay</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        string res = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i ++ ) &#123;</span><br><span class="line">            string t;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; res.<span class="built_in">size</span>(); j ++ ) &#123;</span><br><span class="line">                <span class="type">int</span> k = j + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(k &lt; res.<span class="built_in">size</span>() &amp;&amp; res[k] == res[k - <span class="number">1</span>]) k ++ ;</span><br><span class="line">                t += <span class="built_in">to_string</span>(k - j) + res[j];</span><br><span class="line">                j = k - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res = t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc36有效的数独</title>
+      <link href="/2023/01/11/lc36%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/"/>
+      <url>/2023/01/11/lc36%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/valid-sudoku/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>按三个要求for循环判断即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidSudoku</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="type">bool</span> st[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i ++ ) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="built_in">sizeof</span>(st));</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j ++ ) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j] != <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">                    <span class="type">int</span> t = board[i][j] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                    <span class="keyword">if</span>(st[t]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    st[t] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i ++ ) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="built_in">sizeof</span>(st));</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j ++ ) &#123;</span><br><span class="line">                <span class="keyword">if</span>(board[j][i] != <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">                    <span class="type">int</span> t = board[j][i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                    <span class="keyword">if</span>(st[t]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    st[t] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i += <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j += <span class="number">3</span>) &#123;</span><br><span class="line">                <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="built_in">sizeof</span>(st));</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> a = <span class="number">0</span>; a &lt; <span class="number">3</span>; a ++ ) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> b = <span class="number">0</span>; b &lt; <span class="number">3</span>; b ++ ) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(board[a + i][b + j] != <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">                            <span class="type">int</span> t = board[a + i][b + j] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                            <span class="keyword">if</span>(st[t]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                            st[t] = <span class="literal">true</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+            <tag> 矩阵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc35搜索插入位置</title>
+      <link href="/2023/01/11/lc35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/"/>
+      <url>/2023/01/11/lc35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/search-insert-position/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>二分查找在找到时返回下标，不存在时返回应插入的结点位置</p><p>注意边界条件，若排在数组最后，由于越界，是找不到的</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[r] &lt; target) <span class="keyword">return</span> r + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt;= target) r = mid;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//if(nums[r] == target) return r;</span></span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc33在排序数组中查找元素的第一个和最后一个位置</title>
+      <link href="/2023/01/11/lc34%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/"/>
+      <url>/2023/01/11/lc34%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>经典二分问题<br>mid的两种取法：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(nums[mid] &gt;= target) r = mid;</span><br><span class="line">    <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">    <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(nums[mid] &lt;= target) l = mid;</span><br><span class="line">    <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">searchRange</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt;= target) r = mid;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[r] != target) <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> a = r;</span><br><span class="line">            l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">                <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(nums[mid] &lt;= target) l = mid;</span><br><span class="line">                <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>&#123;a, l&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc32搜索旋转排序数组</title>
+      <link href="/2023/01/11/lc33%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/"/>
+      <url>/2023/01/11/lc33%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>二分查找翻转点，区间分为两部分，均为单调的，那么再次二分即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//找翻转点</span></span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt;= nums[<span class="number">0</span>]) l = mid;</span><br><span class="line">            <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target) l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> l = l + <span class="number">1</span>, r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt;= target) r = mid;</span><br><span class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(nums[r] == target) <span class="keyword">return</span> r;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 二分查找 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc31下一个排列</title>
+      <link href="/2023/01/11/lc31%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/"/>
+      <url>/2023/01/11/lc31%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/next-permutation/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>找到字符串大1的字典序</p><p>若后n - 1个数按降序排列，倒数第n个非降序，那么找到后n个数组降序序列中大于该数的最小值，进行交换，并对最后几个进行升序排列，得到目标结果；</p><p>若数组为降序排列，则表示已为最大字典序的数组，逆置后即为最小</p><p>举例： 起始<code>9 8 7 6 3 5 4 2 1</code><br>找不符合降序的第一位数字 <code>9 8 7 6 @3@ 5 4 2 1</code><br>大于他的最小即将这个3换为一个比他大但最小的数， 向后寻找4<br>改为 <code>9 8 7 6 4 5 3 2 1</code><br>后将最后的<code>3 2 1</code>改为升序（可理解为2431，经过重排列，大于2431的最小值，即3412）<br>结果为<code>9 8 7 6 4 5 1 2 3</code></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">nextPermutation</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//next_permutation(nums.begin(), nums.end());</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> k = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(k &gt; <span class="number">0</span> &amp;&amp; nums[k] &lt;= nums[k - <span class="number">1</span>]) k -- ;</span><br><span class="line">        <span class="keyword">if</span>(!k) &#123;</span><br><span class="line">            <span class="built_in">reverse</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> t = k;</span><br><span class="line">            <span class="keyword">while</span> (t &lt; nums.<span class="built_in">size</span>() &amp;&amp;  nums[t] &gt; nums[k - <span class="number">1</span>]) t ++ ;</span><br><span class="line">            <span class="built_in">swap</span>(nums[k - <span class="number">1</span>], nums[t - <span class="number">1</span>]);</span><br><span class="line">            <span class="built_in">reverse</span>(nums.<span class="built_in">begin</span>() + k, nums.<span class="built_in">end</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>lc29两数相除</title>
       <link href="/2023/01/07/lc29%E4%B8%A4%E6%95%B0%E7%9B%B8%E9%99%A4/"/>
       <url>/2023/01/07/lc29%E4%B8%A4%E6%95%B0%E7%9B%B8%E9%99%A4/</url>
