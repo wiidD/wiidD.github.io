@@ -4,6 +4,176 @@
   
     
     <entry>
+      <title>lc50Pow(x, n)</title>
+      <link href="/2023/01/12/lc50Pow-x-n/"/>
+      <url>/2023/01/12/lc50Pow-x-n/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/powx-n/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><code>n</code>的范围从<code>INT_MIN</code>到<code>INT_MAX</code>，可将其指数n化为二进制表示，如<code>$2^&#123;(1011)_2&#125;$</code>可以表示为<code>$ 2^0 * 2^1 * 2e3 $</code></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">myPow</span><span class="params">(<span class="type">double</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//二进制思想</span></span><br><span class="line">        <span class="type">double</span> res = <span class="number">1.0</span>;</span><br><span class="line">        <span class="type">bool</span> is_minus = n &lt; <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">long</span> <span class="type">long</span> k = <span class="built_in">abs</span>((<span class="type">long</span> <span class="type">long</span>)(n)); k; k &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res *= x;</span><br><span class="line">            x = x * x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(is_minus) res = <span class="number">1.0</span> / res;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 递归 </tag>
+            
+            <tag> 数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc49字母异位词分组</title>
+      <link href="/2023/01/12/lc49%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"/>
+      <url>/2023/01/12/lc49%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/group-anagrams/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对于字母组成相同，但顺序不同的字符串们，属于字母异味词。</p><p>对于每个字符串，加入到他所对应的字典序最小的哈希表，最后输出即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">groupAnagrams</span>(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        unordered_map&lt;string, vector&lt;string&gt;&gt; hash;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; str : strs) &#123;</span><br><span class="line">            string nstr = str;</span><br><span class="line">            <span class="built_in">sort</span>(nstr.<span class="built_in">begin</span>(), nstr.<span class="built_in">end</span>());</span><br><span class="line">            hash[nstr].<span class="built_in">push_back</span>(str);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; item : hash) res.<span class="built_in">push_back</span>(item.second);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+            <tag> 字符串 </tag>
+            
+            <tag> 排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc48旋转图像</title>
+      <link href="/2023/01/12/lc48%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/"/>
+      <url>/2023/01/12/lc48%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/rotate-image/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>数学题，先沿对角翻转一次，再沿中心线上下翻转一次即可。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先沿对角线翻转一次，再左右翻转依次</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; matrix.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j ++ ) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; matrix.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>, k = matrix[<span class="number">0</span>].<span class="built_in">size</span>() - <span class="number">1</span>; j &lt; k; j ++ , k -- ) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[i][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 矩阵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc47全排列 II</title>
+      <link href="/2023/01/12/lc47%E5%85%A8%E6%8E%92%E5%88%97-II/"/>
+      <url>/2023/01/12/lc47%E5%85%A8%E6%8E%92%E5%88%97-II/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/permutations-ii/">题目链接</a></h3><p>与上题相比，数组中有重复的数，就会导致重复出现，</p><p>首先全部加入，对答案进行排序去重即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line">    <span class="type">bool</span> st[<span class="number">10</span>];<span class="comment">//第i位的数是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permuteUnique</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">sort</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        res.<span class="built_in">erase</span>(<span class="built_in">unique</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>()), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(u == nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="comment">//auto ress = path;</span></span><br><span class="line">            <span class="comment">//sort(ress.begin(), ress.end());</span></span><br><span class="line">            res.<span class="built_in">push_back</span>(path);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!st[i]) &#123;</span><br><span class="line">                path.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">                st[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="built_in">dfs</span>(nums, u + <span class="number">1</span>);</span><br><span class="line">                st[i] = <span class="literal">false</span>;</span><br><span class="line">                path.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 回溯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc46全排列</title>
+      <link href="/2023/01/12/lc46%E5%85%A8%E6%8E%92%E5%88%97/"/>
+      <url>/2023/01/12/lc46%E5%85%A8%E6%8E%92%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/permutations/">题目链接</a></h3><p>全排列经典dfs问题</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; path;</span><br><span class="line">    <span class="type">bool</span> st[<span class="number">10</span>];<span class="comment">//第i位的数是否被选中</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(u == nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(path);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!st[i]) &#123;</span><br><span class="line">                path.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">                st[i] = <span class="literal">true</span>;</span><br><span class="line">                <span class="built_in">dfs</span>(nums, u + <span class="number">1</span>);</span><br><span class="line">                st[i] = <span class="literal">false</span>;</span><br><span class="line">                path.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数组 </tag>
+            
+            <tag> 回溯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lc43字符串相乘</title>
+      <link href="/2023/01/12/lc43%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/"/>
+      <url>/2023/01/12/lc43%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a><a href="https://leetcode.cn/problems/multiply-strings/">题目链接</a></h3><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>从个位开始运算，上式第<code>i</code>位乘下式第<code>j</code>位，若无进位则结果在第<code>i + j</code>位上</p><p>首先进行不进位乘法，因为结果每一位上可能有几项相加得来，最后对每一位的进位进行处理，最后记得删除高位多余的0数位</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">multiply</span><span class="params">(string num1, string num2)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; A, B;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = num1.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i -- ) A.<span class="built_in">push_back</span>(num1[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = num2.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i -- ) B.<span class="built_in">push_back</span>(num2[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">C</span><span class="params">(num1.size() + num2.size())</span></span>;</span><br><span class="line">        <span class="comment">//首先不进位存储</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; num1.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; num2.<span class="built_in">size</span>(); j ++ ) &#123;</span><br><span class="line">                C[i + j] += A[i] * B[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; num1.<span class="built_in">size</span>() + num2.<span class="built_in">size</span>(); i ++ ) &#123;</span><br><span class="line">            C[i] += t;</span><br><span class="line">            t = C[i] / <span class="number">10</span>;</span><br><span class="line">            C[i] %= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> k = num1.<span class="built_in">size</span>() + num2.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(k &gt; <span class="number">0</span> &amp;&amp; !C[k]) k -- ;</span><br><span class="line">        </span><br><span class="line">        string res;</span><br><span class="line">        <span class="keyword">while</span>(k &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//res += C[k] + &#x27;0&#x27;;</span></span><br><span class="line">            res += <span class="built_in">to_string</span>(C[k]);</span><br><span class="line">            k -- ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 字符串 </tag>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 模拟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>lc40组合总和 II</title>
       <link href="/2023/01/11/lc40%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-II/"/>
       <url>/2023/01/11/lc40%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-II/</url>
